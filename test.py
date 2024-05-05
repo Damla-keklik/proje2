@@ -17,14 +17,22 @@ class TestDatabaseOperations(unittest.TestCase):
         yeni_gemi = Gemi("123", "Gemi", 200, 2023, "Yolcu", 100, 0, 0, 600)
         yeni_gemi.ekle()
         # Eklenen gemiyi veritabanında sorgulayarak kontrol edebilirsiniz
+    def test_gemi_sil(self):
+        # Silinecek geminin seri numarası
+        seri_numarasi = "123"
+        # Gemi silme işlemini dene
+        success = Gemi.sil_gemi_by_seri_numarasi(seri_numarasi)
+        # Silme işleminin başarılı olup olmadığını kontrol et
 
-    def test_sefer_ekle(self):
-        # Sefer ekleme işlemi için test
-        yeni_sefer = Sefer(1, "2020-05-02", "2022-05-10", 1, 1, 3, 1)  # Örnek veriler, gerçek verilere göre değiştirilmeli
-        yeni_sefer.ekle()
-        # Eklenen seferi veritabanında sorgulayarak kontrol edebilirsiniz
+    def test_gemi_duzenle(self):
+        # Düzenlenecek geminin seri numarası
+        seri_numarasi = "123"
+        # Yeni veriler
+        yeni_veriler = ("Yeni Ad", 1500, 2025, "Yeni Tip", 120, 600.0, 250, 2500.0)
+        # Gemi düzenleme işlemini dene
+        success = Gemi.duzenle_by_seri_numarasi(seri_numarasi, yeni_veriler)
+        # Düzenleme işleminin başarılı olup olmadığını kontrol et
 
-    # Diğer test metodlarını da aynı şekilde ekleyebilirsiniz
 
 if __name__ == '__main__':
     unittest.main()
